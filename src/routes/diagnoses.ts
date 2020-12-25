@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
-import diagnoses from '../../data/diagnoses.json';
+import diagnosesService from '../services/diagnosesService';
 
 router.get('/', (_req, res) => {
-  res.status(200).json(diagnoses);
+  res.status(200).json(diagnosesService.getDiagnoses());
 });
 
 
