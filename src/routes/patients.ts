@@ -7,10 +7,20 @@ router.get('/', (_req, res) => {
   res.status(200).json(patientsServices.getNonSensitiveEntriesPatients());
 });
 
+router.get('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  res.status(200).json(patientsServices.getPatient(id));
+});
+
 router.post('/', (req, res) => {
-  const newPatient = toNewPatientEntry(req.body);
-  const addedPatient = patientsServices.addPatient(newPatient);
-  res.status(201).json(addedPatient);
+  try {
+    const newPatient = toNewPatientEntry(req.body);
+    const addedPatient = patientsServices.addPatient(newPatient);
+    res.status(201).json(addedPatient);    
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+
 });
 
 
