@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "node build/index.js",
-    "dev": "ts-node-dev index.ts",
+    "start": "tsc && node build/index.js",
+    "dev": "ts-node-dev src/index.ts",
     "lint": "eslint --ext .ts ."
   },
   "author": "Joshua Chin",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.9",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "typescript": "^4.1.3"
   },
